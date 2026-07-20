@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TheHuntRouteImport } from './routes/the-hunt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PlacesRouteImport } from './routes/places'
+import { Route as InsiderRouteImport } from './routes/insider'
+import { Route as FollowRouteImport } from './routes/follow'
+import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TheHuntRoute = TheHuntRouteImport.update({
+  id: '/the-hunt',
+  path: '/the-hunt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlacesRoute = PlacesRouteImport.update({
+  id: '/places',
+  path: '/places',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsiderRoute = InsiderRouteImport.update({
+  id: '/insider',
+  path: '/insider',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FollowRoute = FollowRouteImport.update({
+  id: '/follow',
+  path: '/follow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/follow': typeof FollowRoute
+  '/insider': typeof InsiderRoute
+  '/places': typeof PlacesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-hunt': typeof TheHuntRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/follow': typeof FollowRoute
+  '/insider': typeof InsiderRoute
+  '/places': typeof PlacesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-hunt': typeof TheHuntRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/calendar': typeof CalendarRoute
+  '/follow': typeof FollowRoute
+  '/insider': typeof InsiderRoute
+  '/places': typeof PlacesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/the-hunt': typeof TheHuntRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/calendar'
+    | '/follow'
+    | '/insider'
+    | '/places'
+    | '/sitemap.xml'
+    | '/the-hunt'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/calendar'
+    | '/follow'
+    | '/insider'
+    | '/places'
+    | '/sitemap.xml'
+    | '/the-hunt'
+  id:
+    | '__root__'
+    | '/'
+    | '/calendar'
+    | '/follow'
+    | '/insider'
+    | '/places'
+    | '/sitemap.xml'
+    | '/the-hunt'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CalendarRoute: typeof CalendarRoute
+  FollowRoute: typeof FollowRoute
+  InsiderRoute: typeof InsiderRoute
+  PlacesRoute: typeof PlacesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TheHuntRoute: typeof TheHuntRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/the-hunt': {
+      id: '/the-hunt'
+      path: '/the-hunt'
+      fullPath: '/the-hunt'
+      preLoaderRoute: typeof TheHuntRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/places': {
+      id: '/places'
+      path: '/places'
+      fullPath: '/places'
+      preLoaderRoute: typeof PlacesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insider': {
+      id: '/insider'
+      path: '/insider'
+      fullPath: '/insider'
+      preLoaderRoute: typeof InsiderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/follow': {
+      id: '/follow'
+      path: '/follow'
+      fullPath: '/follow'
+      preLoaderRoute: typeof FollowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CalendarRoute: CalendarRoute,
+  FollowRoute: FollowRoute,
+  InsiderRoute: InsiderRoute,
+  PlacesRoute: PlacesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TheHuntRoute: TheHuntRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
