@@ -40,30 +40,30 @@ function Home() {
           width={1920}
           height={1200}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-ink/10" />
         <div className="absolute inset-0 flex items-end">
-          <div className="container-editorial pb-16 md:pb-24 text-primary-foreground">
+          <div className="container-editorial pb-16 md:pb-24">
             <div className="eyebrow text-accent">
               <span className="rule bg-accent" />
               Volume I · The Austin Edit
             </div>
-            <h1 className="font-display text-5xl md:text-8xl leading-[0.95] mt-4 max-w-4xl text-white">
+            <h1 className="font-display text-5xl md:text-8xl leading-[0.95] mt-4 max-w-4xl text-cream">
               Be a name in a town that thinks it doesn't have any.
             </h1>
-            <p className="mt-6 max-w-xl text-white/85 text-lg leading-relaxed">
+            <p className="mt-6 max-w-xl text-cream/90 text-lg leading-relaxed">
               A field guide to the rooms, tables, trails and galas where Austin actually happens.
               For the woman who plans on being invited back.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/places"
-                className="bg-white text-ink px-6 py-3 text-xs uppercase tracking-[0.24em]"
+                className="bg-cream text-ink px-6 py-3 text-xs uppercase tracking-[0.24em]"
               >
                 The Places
               </Link>
               <Link
                 to="/the-hunt"
-                className="border border-white/70 text-white px-6 py-3 text-xs uppercase tracking-[0.24em]"
+                className="border border-cream/70 text-cream px-6 py-3 text-xs uppercase tracking-[0.24em]"
               >
                 The Hunt
               </Link>
