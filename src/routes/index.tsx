@@ -57,13 +57,13 @@ function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/places"
-                className="bg-white text-ink px-6 py-3 text-xs uppercase tracking-[0.24em]"
+                className="bg-cream text-ink px-6 py-3 text-xs uppercase tracking-[0.24em]"
               >
                 The Places
               </Link>
               <Link
                 to="/the-hunt"
-                className="border border-white/70 text-white px-6 py-3 text-xs uppercase tracking-[0.24em]"
+                className="border border-cream/70 text-cream px-6 py-3 text-xs uppercase tracking-[0.24em]"
               >
                 The Hunt
               </Link>
